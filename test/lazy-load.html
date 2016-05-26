@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sloth Test</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <script src="../src/sloth.js"></script>
+        <style type="text/css">
+            img {
+                height: 200px;
+                width: 200px;
+                border: 1px solid #eee;
+            }
+        </style>
+    </head>
+
+    <body style="height: 1000px;overflow: auto;webkit-overflow-scrolling:touch;">
+        <h1>Test Page</h1>
+        <div style="height: 200%;">
+            <!-- {{weather}} -->
+        <img sloth-img="http://s.cn.bing.net/az/hprichbg/rb/SkunkKit_ZH-CN10809503929_1920x1080.jpg"></img>
+        </div>
+
+        <!-- <my-date></my-date> -->
+        <img sloth-img="http://az29176.vo.msecnd.net/videocontent/MtShasta_CorbisRM_711C1165_015_768_HD_ZH-CN1453063878.jpg"></img>
+        </div>
+        <h1>bottom</h1>
+        <script type="text/javascript">
+            var sloth = new Sloth();
+            sloth.init();
+        </script>
+    </body>
+</html>
