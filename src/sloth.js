@@ -20,7 +20,8 @@
     "use strict";
 
     var _lazyFlag = "sloth-img"; // The mark of lazy load
-    var _screenHeight = window.screen.height;
+    var _viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+        _viewPortWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 
     function Sloth(elementId) {
         this.elementId = elementId || "";
@@ -36,12 +37,12 @@
         }
     }
 
-    Sloth.prototype.load = function() { // auto load 
+    Sloth.prototype.load = function() { // Auto load 
         var images = this._images;
         if (images.length > 0) {
             for (var i = 0; i < images.length; i++) {
                 var img = images[i];
-                if (this.isOnVerticalVeiwPort(img)) {
+                if (this.isOnVerticalViewPort(img) && this.isOnHorizontalViewPort(img)) {
                     var url = img.getAttribute(_lazyFlag);
                     img.setAttribute("src", url);
                     img.isload = true;
@@ -58,9 +59,14 @@
         }, false);
     };
 
-    Sloth.prototype.isOnVerticalVeiwPort = function(ele) {
+    Sloth.prototype.isOnVerticalViewPort = function(ele) {
         var rect = ele.getBoundingClientRect();
-        return rect.top > 0 && rect.top <= _screenHeight;
+        return rect.top > 0 && rect.top <= _viewPortHeight;
+    };
+
+    Sloth.prototype.isOnHorizontalViewPort = function(ele) {
+        var rect = ele.getBoundingClientRect();
+        return rect.left > 0 && rect.left <= _viewPortWidth;
     };
 
     return Sloth;
